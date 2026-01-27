@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    margin: 20px;
+    background-color: #21c25e;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+legend {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}
+
+.logo {
+    /* tamanho da imagem */
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.box {
+    color: #21c25e;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+fieldset {
+    padding: 5px;
+    border: 3px solid white;
+}
+
+.inputBox {
+    margin-top: 10px;
+    position: relative;
+}
+
+.inputUser {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #21c25e;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+    letter-spacing: 1.5px;
+}
+
+.labelInput {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.inputUser:focus {
+    outline: none;
+}
+
+.inputUser:focus~.labelInput,
+.inputUser:valid~.labelInput {
+    top: -15px;
+    font-size: 12px;
+    color: #198f46;
+}
+
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px white inset;
+    -webkit-text-fill-color: #000;
+}
+
+.btn-entrar {
+    margin-top: 10px;
+    background-color: #21c25e;
+    color: white;
+    border: none;
+    padding: 12px 45px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(33, 194, 94, 0.4);
+}
+
+.btn-entrar:hover {
+    background-color: #198f46;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(33, 194, 94, 0.5);
+}
+
+.btn-entrar:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(33, 194, 94, 0.4);
+}

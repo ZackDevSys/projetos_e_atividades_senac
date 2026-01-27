@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Login</title>
+
+    <!-- Google Fonts primeiro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <!-- Depois seu CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="box">
+        <form id="loginForm">
+
+            <fieldset>
+                <legend>
+                    <img src="img/PicPay_Green-removebg-preview.png" class="logo">
+                </legend><br />
+
+                <div class="inputBox">
+                    <input type="text" name="" id="cliente" class="inputUser" required><br />
+                    <label for="" class="labelInput">Cliente</label><br />
+                </div>
+
+                <div class="inputBox">
+                    <input type="password" name="" id="senha" class="inputUser" required><br />
+                    <label for="" class="labelInput">Senha</label><br /><br />
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    <input type="submit" name="btn-entrar" class="btn-entrar" value="Entrar" />
+                </div>
+            </fieldset>
+
+        </form>
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>
