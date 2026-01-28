@@ -1,4 +1,8 @@
-# 🚀 Projetos e Atividades – Desenvolvimento de Sistemas | SENAC
+<h1 align="center">
+🚀 Projetos e Atividades
+ 
+Desenvolvimento de Sistemas | SENAC
+</h1>
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/ZackDevSys/projetos_e_atividades_senac)
 ![Instituição](https://img.shields.io/badge/instituição-SENAC-0F4C81)
