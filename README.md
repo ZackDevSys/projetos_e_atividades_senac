@@ -1,5 +1,5 @@
 <h1 align="center">
-🚀 Projetos e Atividades
+🚀 Projetos e Atividades -
  
 Desenvolvimento de Sistemas | SENAC
 </h1>
