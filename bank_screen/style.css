@@ -5,10 +5,12 @@
 }
 
 body {
-    margin: 20px;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #21c25e;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 legend {
@@ -34,10 +36,6 @@ legend {
 .box {
     color: #21c25e;
     font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 40px;
     border-radius: 15px;
     background-color: white;

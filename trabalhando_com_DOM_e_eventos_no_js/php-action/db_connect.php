@@ -2,10 +2,10 @@
 
 //................CONEXÃO COM BANCO................
 
-$servername = "localhost";
-$username = "root";
+$servername = "sql201.infinityfree.com";
+$username = "if0_41086649";
 $password = "";
-$db_name = "produtos";
+$db_name = "if0_41086649_estoque";
 
 $connect = mysqli_connect($servername, $username, $password, $db_name);
 

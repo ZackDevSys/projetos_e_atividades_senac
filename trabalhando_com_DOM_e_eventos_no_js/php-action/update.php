@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $preco      = mysqli_real_escape_string($connect, $_POST['preco']);
     $quantidade = mysqli_real_escape_string($connect, $_POST['quantidade']);
 
-    $sql = "UPDATE estoque SET 
+    $sql = "UPDATE produtos SET 
                 nome_produto = '$nome',
                 categoria = '$categoria',
                 preco = '$preco',

@@ -100,7 +100,7 @@ endif;
                     }
 
                     // SQL base
-                    $sql = "SELECT * FROM estoque";
+                    $sql = "SELECT * FROM produtos";
 
                     // Aplica filtro se houver busca
                     if (!empty($busca)) {

@@ -64,7 +64,7 @@ include_once 'php-action/db_connect.php';
                     <select name="codigo_produto" id="produto" required>
                         <option value="">Selecione o produto</option>
                         <?php
-                        $sql = "SELECT idcodigo, nome_produto, preco, quantidade FROM estoque";
+                        $sql = "SELECT idcodigo, nome_produto, preco, quantidade FROM produtos";
                         $res = mysqli_query($connect, $sql);
                         while ($p = mysqli_fetch_assoc($res)):
                         ?>

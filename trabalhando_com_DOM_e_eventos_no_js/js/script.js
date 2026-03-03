@@ -39,7 +39,7 @@ function fecharModalSair() {
 }
 
 // Função para calcular o total da venda
-const produto = document.getElementById('produto');
+const produto = document.getElementById('if0_41086649_estoque');
 const quantidade = document.getElementById('quantidade');
 const total = document.getElementById('total');
 const totalHidden = document.getElementById('total_hidden');

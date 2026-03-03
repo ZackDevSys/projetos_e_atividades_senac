@@ -18,7 +18,7 @@ if (!isset($_GET['id'])) {
 
 $idcodigo = intval($_GET['id']);
 
-$sql = "SELECT * FROM estoque WHERE idcodigo = $idcodigo";
+$sql = "SELECT * FROM produtos WHERE idcodigo = $idcodigo";
 $resultado = mysqli_query($connect, $sql);
 $dados = mysqli_fetch_assoc($resultado);
 

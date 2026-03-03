@@ -20,17 +20,17 @@ include_once 'php-action/db_connect.php';
 
 // Total de produtos
 $totalProdutos = mysqli_fetch_row(
-    mysqli_query($connect, "SELECT COUNT(*) FROM estoque")
+    mysqli_query($connect, "SELECT COUNT(*) FROM produtos")
 )[0];
 
 // Estoque total (kg)
 $estoqueTotal = mysqli_fetch_row(
-    mysqli_query($connect, "SELECT SUM(quantidade) FROM estoque")
+    mysqli_query($connect, "SELECT SUM(quantidade) FROM produtos")
 )[0];
 
 // Valor estimado do estoque
 $valorEstoque = mysqli_fetch_row(
-    mysqli_query($connect, "SELECT SUM(preco * quantidade) FROM estoque")
+    mysqli_query($connect, "SELECT SUM(preco * quantidade) FROM produtos")
 )[0];
 
 // Vendas hoje
