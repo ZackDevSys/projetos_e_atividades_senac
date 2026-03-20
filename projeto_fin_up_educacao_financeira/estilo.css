@@ -5,6 +5,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: #0B0F1A;
     color: #fff;
@@ -13,6 +17,8 @@ body {
 
 /* Glow Azul */
 .glow-blue {
+    z-index: 0;
+    pointer-events: none !important;
     position: absolute;
     top: -250px;
     left: -200px;
@@ -24,6 +30,8 @@ body {
 
 /* Glow Laranja */
 .glow-orange {
+    z-index: 0;
+    pointer-events: none !important;
     position: absolute;
     bottom: -300px;
     right: -200px;
@@ -76,6 +84,7 @@ nav a:hover {
 }
 
 /* Botão principal laranja */
+
 .btn-primary {
     background: linear-gradient(135deg, #FF6A00, #F9860E);
     padding: 12px 28px;
@@ -93,9 +102,11 @@ nav a:hover {
 }
 
 /* Hero */
+
 .hero {
     text-align: center;
-    padding: 120px 0 80px 0;
+    justify-content: center;
+    padding: 120px 20px;
 }
 
 .hero h1 {
@@ -135,24 +146,16 @@ nav a:hover {
 
 .btn-secondary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(14, 92, 173, 0.6);
-}
-
-.stats {
-    margin-top: 70px;
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    font-size: 14px;
-    color: #64748b;
+    box-shadow: 0 15px 40px rgba(14, 91, 173, 0.808);
 }
 
 /* About */
+
 .about-finup {
-    margin-top: 140px;
     display: flex;
     justify-content: center;
     text-align: center;
+    padding-top: 120px;
 }
 
 .about-content {
@@ -164,7 +167,7 @@ nav a:hover {
     font-size: 42px;
     font-weight: 900;
     line-height: 1.2;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
 }
 
 .about-finup h2 span {
@@ -187,14 +190,15 @@ nav a:hover {
 .about-finup .highlight {
     font-size: 22px;
     font-weight: 700;
-    color: #F9860E;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 /* Features */
+
 .features {
-    margin-top: 140px;
     text-align: center;
+    justify-content: center;
+    padding: 150px 20px;
 }
 
 .features h2 {
@@ -239,24 +243,96 @@ nav a:hover {
 }
 
 /* CTA */
+
 .cta {
-    margin-top: 160px;
-    padding: 100px 20px;
+    margin-top: 150px;
+    padding: 70px 20px;
     text-align: center;
     background: linear-gradient(135deg, #0E5CAD, #FF6A00);
 }
 
 .cta h2 {
     font-size: 48px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .cta p {
     font-size: 18px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+}
+
+/* CONTROLE */
+
+.controle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 20px;
+}
+
+.controle-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.controle-texto {
+    flex: 1;
+}
+
+.controle-texto h1 {
+    font-size: 46px;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.controle-texto h1 span {
+    background: linear-gradient(90deg, #0F7BCA, #F9860E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.controle-texto p {
+    font-size: 18px;
+    margin: 28px 0;
+    color: #aaa;
+}
+
+.controle-texto ul {
+    margin-top: 10px;
+}
+
+.controle-texto li {
+    font-size: 16px;
+    list-style: none;
+    margin-bottom: 14px;
+    color: #B6C2CF;
+}
+
+/* CARD */
+
+.controle-card {
+    width: 420px;
+    height: 260px;
+    border-radius: 18px;
+    border: 1px solid rgba(14, 92, 173, 0.2);
+    background-image: url(img/preview_dashboard.png);
+    background-size: cover;
+    background-position: top center;
+    transition: 5s;
+}
+
+.controle-card:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+    border-color: #F9860E;
+    background-position: bottom center;
 }
 
 /* Footer */
+
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -266,6 +342,7 @@ footer {
 }
 
 /* Responsivo */
+
 @media(max-width: 900px) {
     .hero h1 {
         font-size: 40px;
@@ -280,4 +357,34 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/* BOTÃO VOLTAR AO TOPO */
+
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 9999999 !important;
+    background: #0E5CAD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+#backToTop:hover {
+    box-shadow: 0 10px 30px #0E5CAD;
+}
+
+#backToTop svg {
+    visibility: visible;
+    width: 26px;
+    height: 26px;
+    fill: white;
 }

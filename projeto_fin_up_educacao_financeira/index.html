@@ -22,14 +22,14 @@
                 <span>Fin</span><span>Up</span>
             </div>
             <nav>
-                <a href="#">Sobre</a>
-                <a href="#">O que fazemos</a>
-                <a href="#">Contato</a>
-                <a href="#" class="btn-primary">Entrar</a>
+                <a href="#solucao">Solução</a>
+                <a href="#ferramenta">Ferramenta</a>
+                <a href="#controle">Controle</a>
+                <a href="login.php" class="btn-secondary">Entrar</a>
             </nav>
         </header>
 
-        <section class="hero">
+        <section id="hero" class="hero">
             <h1>Educação financeira que transforma <span>sua vida e seu futuro</span></h1>
             <p>
                 Sem enrolação. Sem miséria financeira. Controle de gastos, simulação de juros e inteligência para
@@ -37,11 +37,11 @@
             </p>
 
             <div class="hero-buttons">
-                <a href="#" class="btn-primary">Começar agora</a>
+                <a href="#cadastrar" class="btn-primary">Começar agora</a>
             </div>
         </section>
 
-        <section class="about-finup">
+        <section id="solucao" class="about-finup">
             <div class="about-content">
                 <h2>Educação financeira não é luxo.<br>
                     <span>É liberdade.</span>
@@ -49,7 +49,9 @@
 
                 <p>
                     A FinUp nasceu com um propósito claro:
-                    <strong>transformar a relação do brasileiro com o dinheiro.</strong>
+                    <strong>transformar a relação do brasileiro com o dinheiro.</strong><br />
+                    Nossa plataforma combina tecnologia, organização financeira e conteúdo educativo para ajudar
+                    qualquer pessoa a assumir o controle do próprio dinheiro.
                 </p>
 
                 <p>
@@ -65,7 +67,7 @@
             </div>
         </section>
 
-        <section class="features">
+        <section id="ferramenta" class="features">
             <h2>O que a FinUp oferece</h2>
             <p>Controle, crescimento e performance em um único ecossistema.</p>
 
@@ -89,17 +91,55 @@
 
             </div>
         </section>
+
+        <section id="controle" class="controle">
+            <div class="controle-container">
+
+                <!-- TEXTO -->
+                <div class="controle-texto">
+                    <h1>Controle total. <span>Sem achismo.</span></h1>
+
+                    <p>
+                        Veja seu dinheiro se movimentando em tempo real e tome decisões com clareza.
+                        Chega de fim de mês no escuro.
+                    </p>
+
+                    <ul>
+                        <li>✔ Dashboard inteligente</li>
+                        <li>✔ Evolução financeira visual</li>
+                        <li>✔ Controle por categoria</li>
+                        <li>✔ Insights automáticos</li>
+                    </ul>
+
+                </div>
+
+                <!-- CARD -->
+                <div class="controle-card"></div>
+            </div>
+        </section>
+
+
     </div>
 
-    <section class="cta">
+    <section id="cadastrar" class="cta">
         <h2>Comece a dominar suas finanças hoje</h2>
         <p>Transforme sua educação financeira.</p>
-        <a href="#" class="btn-secondary">Criar minha conta</a>
+        <a href="cadastro.php" class="btn-secondary">Criar minha conta</a>
     </section>
 
     <footer>
         © 2026 FinUp - Educação Financeira Inteligente
     </footer>
+
+    <script src="js/script.js"></script>
+
+    <a href="#">
+        <button id="backToTop" type="button">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 4l-8 8h5v8h6v-8h5z" />
+            </svg>
+        </button>
+    </a>
 
 </body>
 
