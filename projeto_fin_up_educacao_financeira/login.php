@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinUp | Login</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/login_cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -24,7 +24,7 @@
         <div class="login-left">
 
             <h1>Que bom te ver de novo! 👋</h1>
-            <h2>Vamos continuar sua <span>evolução financeira?</span></h2>
+            <h2>Vamos continuar sua <span>evolução financeira ?</span></h2>
 
             <img src="img/porquinho_fin_png.png" alt="FinUp">
 
@@ -37,6 +37,9 @@
                 <span>Fin</span><span>Up</span>
             </div>
 
+            <!-- melhoria: mensagem de erro dinâmica que aparece quando o login falha -->
+            <p id="mensagemLogin"></p>
+
             <form action="bd_connect/login.php" method="POST">
 
                 <div class="input-group">
@@ -46,7 +49,7 @@
                 <div class="input-group senha-group">
                     <input type="password" name="senha" id="senha" placeholder="Senha" required>
 
-                    <span class="toggle-senha" onclick="mostrarSenha()">👁</span>
+                    <span class="toggle-senha" onclick="mostrarSenha(this)">👁</span>
                 </div>
 
                 <div class="remember">
@@ -65,13 +68,17 @@
 
             <div class="reenviar-area">
 
-                <p class="reenviar-toggle" onclick="">
-                    Não recebeu o email de verificação? <span>Reenviar</span>
+                <!-- melhoria: mensagem de sucesso ou erro que aparece após tentar reenviar o email de verificação -->
+                <p id="mensagemReenvio"></p>
+
+                <p class="reenviar-texto">
+                    <span class="texto-fixo">Não recebeu o email de verificação?</span>
+                    <span class="reenviar-toggle">Reenviar</span>
                 </p>
 
-                <form class="reenviar-box" id="formReenviar">
+                <form class="reenviar-box" id="formReenviar" action="bd_connect/reenviar_verificacao.php" method="POST">
 
-                    <div class="input-group">
+                    <div id="inputGroup" class="input-group">
                         <input type="email" name="email" placeholder="Digite seu email" required>
                     </div>
 
@@ -94,7 +101,9 @@
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js">
+
+    </script>
 
 </body>
 

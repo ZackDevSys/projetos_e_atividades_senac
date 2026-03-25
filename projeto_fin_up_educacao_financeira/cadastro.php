@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinUp | Cadastro</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/login_cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -34,6 +34,9 @@
                 <span>Fin</span><span>Up</span>
             </div>
 
+            <!-- melhoria: mensagem de erro dinâmica que aparece quando o cadastro falha -->
+            <p id="mensagemCadastro"></p>
+
             <form action="bd_connect/cadastrar.php" method="POST" onsubmit="return validarFormulario()">
 
                 <!-- NOME DE USUÁRIO -->
@@ -50,18 +53,14 @@
                 <div class="input-group senha-group">
                     <input type="password" name="senha" id="senha" placeholder="Senha" required>
 
-                    <span class="toggle-senha" onclick="mostrarSenha()">
-                        👁
-                    </span>
+                    <span class="toggle-senha" onclick="mostrarSenha(this)">👁</span>
                 </div>
 
                 <!-- CONFIRMAR SENHA -->
                 <div class="input-group senha-group">
                     <input type="password" id="confirmarSenha" placeholder="Confirmar senha" required>
-                    <span class="toggle-senha" onclick="mostrarConfirmarSenha()">👁</span>
+                    <span class="toggle-senha" onclick="mostrarSenha(this)">👁</span>
                 </div>
-
-                <p id="erroSenha" style="color:red; font-size:14px;"></p>
 
                 <button class="btn-primary">
                     Criar Conta

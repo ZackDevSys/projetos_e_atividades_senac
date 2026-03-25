@@ -32,7 +32,7 @@ function enviarEmail($emailDestino, $nome, $link)
 
         $mail->isHTML(true);
 
-        $mail->Subject = "Confirme seu cadastro no FinUp";
+        $mail->Subject = "🚀 Confirme sua conta no FinUp";
 
         // 🔐 Segurança
         $nome = htmlspecialchars($nome);
@@ -40,23 +40,58 @@ function enviarEmail($emailDestino, $nome, $link)
 
         $mail->Body = "
 
-<h2>Bem-vindo ao FinUp</h2>
+<!DOCTYPE html>
+<html>
+<body style='margin:0; padding:0; background:#0B0F1A; font-family:Arial;'>
 
-<p>Olá <b>$nome</b></p>
+<div style='max-width:600px; margin:auto; padding:30px;'>
 
-<p>Clique no botão abaixo para confirmar sua conta:</p>
+    <div style='background:#111827; border-radius:15px; padding:30px; text-align:center; color:#fff;'>
 
-<a href='$link'
-    style='
-background:#FF6A00;
-padding:12px 25px;
-color:white;
-text-decoration:none;
-border-radius:30px;
-font-weight:bold;
-'>Confirmar Conta</a>
+        <!-- LOGO -->
+        <h1 style='margin-bottom:10px;'>
+            <span style='color:#0F7BCA;'>Fin</span><span style='color:#F9860E;'>Up</span>
+        </h1>
 
-<p>Se você não criou uma conta ignore este email.</p>
+        <!-- TITULO -->
+        <h2 style='margin-top:0;'>Confirme seu email 🚀</h2>
+
+        <!-- TEXTO -->
+        <p style='color:#cfd6e6; font-size:15px;'>
+            Olá <strong>$nome</strong>,<br><br>
+            Falta só um passo para começar sua evolução financeira.
+        </p>
+
+        <!-- BOTÃO -->
+        <div style='margin:30px 0;'>
+
+            <a href='$link' target='_blank'
+            style='
+                background: linear-gradient(135deg, #FF6A00, #F9860E);
+                padding: 14px 28px;
+                color: white;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: bold;
+                display: inline-block;
+                box-shadow: 0 10px 25px rgba(255,106,0,0.4);
+            '>
+                Confirmar Conta
+            </a>
+
+        </div>
+
+        <!-- TEXTO FINAL -->
+        <p style='font-size:13px; color:#aaa;'>
+            Se você não criou essa conta, pode ignorar este email.
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
 
 ";
 

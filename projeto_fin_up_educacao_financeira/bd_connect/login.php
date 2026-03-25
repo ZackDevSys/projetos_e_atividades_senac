@@ -5,11 +5,13 @@ include "conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
-
-    $sql = "SELECT * FROM usuarios WHERE email='$email'";
-    $resultado = $conn->query($sql);
+    $email = trim($_POST['email'] ?? '');
+    $senha = $_POST['senha'] ?? '';
+    
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
     if ($resultado->num_rows > 0) {
 
@@ -19,13 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($usuario['verificado'] == 0) {
 
-                echo "Confirme seu email antes de fazer login.<br><br>
-                <form action='bd_connect/reenviar_verificacao.php' method='POST'>
-                <input type='hidden' name='email' value='$email'>
-                <button type='submit'>Reenviar email de verificação</button>
-                </form>";
+                header("Location: ../login.php?erro=nao_verificado&email=$email");
                 exit();
             }
+
+            // 🔐 segurança extra
+            session_regenerate_id(true);
 
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario_nome'] = $usuario['usuario'];
@@ -34,11 +35,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
 
-            echo "Senha incorreta";
+            header("Location: ../login.php?erro=senha_incorreta");
+            exit();
         }
     } else {
 
-        echo "Usuário não encontrado";
+        header("Location: ../login.php?erro=email_nao_existe");
+        exit();
     }
 }
 

@@ -188,6 +188,7 @@ nav a:hover {
 }
 
 .about-finup .highlight {
+    color: #fff;
     font-size: 22px;
     font-weight: 700;
     margin-top: 40px;
@@ -319,7 +320,7 @@ nav a:hover {
     height: 260px;
     border-radius: 18px;
     border: 1px solid rgba(14, 92, 173, 0.2);
-    background-image: url(img/preview_dashboard.png);
+    background-image: url(../img/preview_dashboard.png);
     background-size: cover;
     background-position: top center;
     transition: 5s;

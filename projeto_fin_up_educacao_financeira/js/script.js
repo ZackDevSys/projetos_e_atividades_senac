@@ -3,6 +3,206 @@ let indexExcluir = null
 let transacoes = []
 
 /* =========================
+VALIDAR FORMULÁRIO DE CADASTRO
+========================= */
+
+function validarFormulario() {
+    let senha = document.getElementById("senha").value;
+    let confirmar = document.getElementById("confirmarSenha").value;
+    let msg = document.getElementById("mensagemCadastro");
+
+    if (!msg) return true;
+
+    if (senha !== confirmar) {
+        msg.innerText = "As senhas não coincidem !";
+        msg.classList.add("mensagem-erro");
+        msg.style.display = "block";
+        autoSumir(msg);
+        return false;
+    }
+
+    msg.innerText = "";
+    msg.style.display = "none";
+    return true;
+}
+
+/* =========================
+RODAR APÓS CARREGAR
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const params = new URLSearchParams(window.location.search);
+    const erro = params.get("erro");
+    const sucesso = params.get("sucesso");
+
+    /* =========================
+    LOGIN
+    ========================= */
+
+    const msgLogin = document.getElementById("mensagemLogin");
+
+    if (msgLogin) {
+
+        msgLogin.style.display = "none";
+
+        if (erro || sucesso) {
+            msgLogin.style.display = "block";
+
+            autoSumir(msgLogin);
+        }
+
+        if (erro === "email_nao_existe") {
+            msgLogin.innerText = "Esse email não está cadastrado !";
+            msgLogin.classList.add("mensagem-erro");
+        }
+
+        if (erro === "senha_incorreta") {
+            msgLogin.innerText = "Senha incorreta !";
+            msgLogin.classList.add("mensagem-erro");
+        }
+
+        if (erro === "nao_verificado") {
+            msgLogin.innerText = "Confirme seu email antes de entrar.";
+            msgLogin.classList.add("mensagem-erro");
+        }
+
+        if (sucesso === "verifique_email") {
+            msgLogin.innerText = "Cadastro feito! Verifique seu email.";
+            msgLogin.classList.add("mensagem-sucesso");
+        }
+    }
+
+    if (sucesso === "email_reenviado") {
+        msgLogin.innerText = "Email reenviado com sucesso 📩";
+        msgLogin.classList.add("mensagem-sucesso");
+    }
+
+    if (erro === "erro_reenvio") {
+        msgLogin.innerText = "Erro ao reenviar email !";
+        msgLogin.classList.add("mensagem-erro");
+    }
+
+    if (sucesso === "ja_verificado") {
+        msgLogin.innerText = "Essa conta já está verificada !";
+        msgLogin.classList.add("mensagem-sucesso");
+    }
+
+    /* =========================
+    CADASTRO
+    ========================= */
+
+    const msgCadastro = document.getElementById("mensagemCadastro");
+
+    if (msgCadastro) {
+
+        msgCadastro.style.display = "none";
+
+        if (erro) {
+            msgCadastro.style.display = "block";
+            autoSumir(msgCadastro)
+        }
+
+        if (erro === "email_existente") {
+            msgCadastro.innerText = "Esse email já está cadastrado !";
+            msgCadastro.classList.add("mensagem-erro");
+        }
+
+        if (erro === "email_invalido") {
+            msgCadastro.innerText = "Digite um email válido !";
+            msgCadastro.classList.add("mensagem-erro");
+        }
+
+        if (erro === "erro_email") {
+            msgCadastro.innerText = "Conta criada, mas erro ao enviar email !";
+            msgCadastro.classList.add("mensagem-erro");
+        }
+
+        if (erro === "erro_geral") {
+            msgCadastro.innerText = "Erro ao cadastrar. Tente novamente !";
+            msgCadastro.classList.add("mensagem-erro");
+        }
+    }
+
+    if (window.location.search) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+});
+
+/* =========================
+AUTO-SUMIR MENSAGENS
+========================= */
+
+function autoSumir(elemento) {
+    if (!elemento) return;
+
+    setTimeout(() => {
+        elemento.style.transition = "opacity 0.5s ease";
+        elemento.style.opacity = "0";
+
+        setTimeout(() => {
+            elemento.style.display = "none";
+            elemento.style.opacity = "1"; // reset
+        }, 500);
+
+    }, 4000); // tempo (4 segundos)
+
+}
+
+/* =========================
+REENVIAR VERIFICAÇÃO
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const toggle = document.querySelector(".reenviar-toggle");
+    const box = document.querySelector(".reenviar-box");
+    const textoFixo = document.querySelector(".texto-fixo");
+
+    if (toggle && box && textoFixo) {
+
+        toggle.addEventListener("click", () => {
+
+            box.classList.toggle("ativo");
+
+            if (box.classList.contains("ativo")) {
+
+                // 🔥 esconde só o texto
+                textoFixo.style.display = "none";
+
+                // muda botão
+                toggle.innerHTML = "Ocultar ▲";
+
+            } else {
+
+                // 🔥 mostra o texto novamente
+                textoFixo.style.display = "inline";
+
+                // volta botão
+                toggle.innerHTML = "Reenviar";
+
+            }
+        });
+    }
+});
+
+/* =========================
+MOSTRAR / OCULTAR SENHA
+========================= */
+
+function mostrarSenha(elemento) {
+    let input = elemento.parentElement.querySelector("input");
+
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
+        elemento.textContent = "👁";
+    }
+}
+
+/* =========================
 INICIALIZAÇÃO
 ========================= */
 

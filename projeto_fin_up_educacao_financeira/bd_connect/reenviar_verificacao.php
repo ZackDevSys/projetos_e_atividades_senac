@@ -15,14 +15,16 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows == 0) {
-    echo "Email não encontrado.";
+    header("Location: ../login.php?erro=email_nao_existe");
+    exit();
     exit;
 }
 
 $usuario = $resultado->fetch_assoc();
 
 if ($usuario['verificado'] == 1) {
-    echo "Esta conta já está verificada.";
+    header("Location: ../login.php?sucesso=ja_verificado");
+    exit();
     exit;
 }
 
@@ -41,7 +43,9 @@ $link = "http://localhost/projeto_fin_up_educacao_financeira/bd_connect/verifica
 /* enviar email */
 
 if (enviarEmail($email, $usuario['usuario'], $link)) {
-    echo "Novo email de verificação enviado.";
+    header("Location: ../login.php?sucesso=email_reenviado");
+    exit();
 } else {
-    echo "Erro ao enviar email.";
+    header("Location: ../login.php?erro=erro_reenvio");
+    exit();
 }

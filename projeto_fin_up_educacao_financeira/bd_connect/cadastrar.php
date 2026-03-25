@@ -9,7 +9,8 @@ $email = trim($_POST['email']);
 $senha = $_POST['senha'];
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo "Email inválido.";
+    header("Location: ../cadastro.php?erro=email_invalido");
+    exit();
     exit;
 }
 
@@ -26,7 +27,8 @@ $verifica->execute();
 $resultado = $verifica->get_result();
 
 if ($resultado->num_rows > 0) {
-    echo "Este email já está cadastrado.";
+    header("Location: ../cadastro.php?erro=email_existente");
+    exit();
     exit;
 }
 
@@ -41,10 +43,13 @@ if ($stmt->execute()) {
     $link = "http://localhost/projeto_fin_up_educacao_financeira/bd_connect/verificar.php?token=$token";
 
     if (enviarEmail($email, $usuario, $link)) {
-        echo "Cadastro realizado! Verifique seu email.";
+        header("Location: ../login.php?sucesso=verifique_email");
+        exit();
     } else {
-        echo "Usuário criado mas email não enviado.";
+        header("Location: ../cadastro.php?erro=erro_email");
+        exit();
     }
 } else {
-    echo "Erro ao cadastrar.";
+    header("Location: ../cadastro.php?erro=erro_geral");
+    exit();
 }
