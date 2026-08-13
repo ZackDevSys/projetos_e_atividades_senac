@@ -1,5 +1,6 @@
 from config.database import get_connection
 
+
 def listar_usuarios():
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -24,6 +25,7 @@ def listar_usuarios():
     finally:
         cursor.close()
         conexao.close()
+
 
 def buscar_usuario_por_id(id):
     conexao = get_connection()
@@ -50,9 +52,11 @@ def buscar_usuario_por_id(id):
         cursor.close()
         conexao.close()
 
+
 def criar_usuario(
     nome,
     email,
+    senha,
     telefone,
     perfil,
     especialidade,
@@ -66,17 +70,19 @@ def criar_usuario(
             INSERT INTO usuarios (
                 nome,
                 email,
+                senha,
                 telefone,
                 perfil,
                 especialidade,
                 status
             )
-            VALUES (%s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
         """
 
         valores = (
             nome,
             email,
+            senha,
             telefone,
             perfil,
             especialidade,
@@ -88,14 +94,20 @@ def criar_usuario(
 
         return cursor.lastrowid
 
+    except Exception:
+        conexao.rollback()
+        raise
+
     finally:
         cursor.close()
         conexao.close()
+
 
 def atualizar_usuario(
     id,
     nome,
     email,
+    senha,
     telefone,
     perfil,
     especialidade,
@@ -105,36 +117,68 @@ def atualizar_usuario(
     cursor = conexao.cursor()
 
     try:
-        sql = """
-            UPDATE usuarios
-            SET
-                nome = %s,
-                email = %s,
-                telefone = %s,
-                perfil = %s,
-                especialidade = %s,
-                status = %s
-            WHERE id = %s
-        """
 
-        valores = (
-            nome,
-            email,
-            telefone,
-            perfil,
-            especialidade,
-            status,
-            id
-        )
+        if senha:
+            sql = """
+                UPDATE usuarios
+                SET
+                    nome = %s,
+                    email = %s,
+                    senha = %s,
+                    telefone = %s,
+                    perfil = %s,
+                    especialidade = %s,
+                    status = %s
+                WHERE id = %s
+            """
+
+            valores = (
+                nome,
+                email,
+                senha,
+                telefone,
+                perfil,
+                especialidade,
+                status,
+                id
+            )
+
+        else:
+            sql = """
+                UPDATE usuarios
+                SET
+                    nome = %s,
+                    email = %s,
+                    telefone = %s,
+                    perfil = %s,
+                    especialidade = %s,
+                    status = %s
+                WHERE id = %s
+            """
+
+            valores = (
+                nome,
+                email,
+                telefone,
+                perfil,
+                especialidade,
+                status,
+                id
+            )
 
         cursor.execute(sql, valores)
         conexao.commit()
 
         return cursor.rowcount
 
+    except Exception:
+        conexao.rollback()
+        raise
+
     finally:
         cursor.close()
         conexao.close()
+
 
 def excluir_usuario(id):
     conexao = get_connection()
@@ -150,6 +194,10 @@ def excluir_usuario(id):
         conexao.commit()
 
         return cursor.rowcount
+
+    except Exception:
+        conexao.rollback()
+        raise
 
     finally:
         cursor.close()

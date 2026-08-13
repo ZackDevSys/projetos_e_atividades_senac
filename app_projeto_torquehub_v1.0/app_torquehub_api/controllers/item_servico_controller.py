@@ -1,58 +1,63 @@
 from flask import jsonify, request
 
-from services.usuario_service import (
-    buscar_usuarios,
-    buscar_usuario,
-    cadastrar_usuario,
-    atualizar_usuario,
-    excluir_usuario
+from services.item_servico_service import (
+    listar_itens,
+    buscar_item,
+    cadastrar_item,
+    atualizar_item,
+    excluir_item
 )
 
 
-def listar():
+def listar(ordem_servico_id):
+
     try:
-        usuarios = buscar_usuarios()
+        itens = listar_itens(ordem_servico_id)
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(usuarios),
-            "dados": usuarios
+            "quantidade": len(itens),
+            "dados": itens
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários.",
+            "mensagem": "Erro ao buscar itens da ordem de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def buscar_por_id(id):
-    try:
-        usuario = buscar_usuario(id)
 
-        if usuario is None:
+    try:
+        item = buscar_item(id)
+
+        if not item:
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Item de serviço não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": usuario
+            "dados": item
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuário.",
+            "mensagem": "Erro ao buscar item de serviço.",
             "erro": str(erro)
         }), 500
 
 
-def criar():
+def criar(ordem_servico_id):
+
     try:
-        dados = request.get_json(silent=True)
+        dados = request.get_json()
 
         if not dados:
             return jsonify({
@@ -60,31 +65,37 @@ def criar():
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_usuario = cadastrar_usuario(dados)
+        id_item = cadastrar_item(
+            ordem_servico_id,
+            dados
+        )
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário cadastrado com sucesso.",
-            "id": id_usuario
+            "mensagem": "Item de serviço adicionado com sucesso.",
+            "id": id_item
         }), 201
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao cadastrar usuário.",
+            "mensagem": "Erro ao adicionar item de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def atualizar(id):
+
     try:
-        dados = request.get_json(silent=True)
+        dados = request.get_json()
 
         if not dados:
             return jsonify({
@@ -92,51 +103,62 @@ def atualizar(id):
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_usuario(id, dados)
+        resultado = atualizar_item(id, dados)
 
         if resultado == 0:
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Item de serviço não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atualizado com sucesso."
+            "mensagem": "Item de serviço atualizado com sucesso."
         }), 200
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar usuário.",
+            "mensagem": "Erro ao atualizar item de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def excluir(id):
+
     try:
-        resultado = excluir_usuario(id)
+        resultado = excluir_item(id)
 
         if resultado == 0:
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Item de serviço não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário excluído com sucesso."
+            "mensagem": "Item de serviço excluído com sucesso."
         }), 200
 
-    except Exception as erro:
+    except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir usuário.",
+            "mensagem": str(erro)
+        }), 400
+
+    except Exception as erro:
+
+        return jsonify({
+            "sucesso": False,
+            "mensagem": "Erro ao excluir item de serviço.",
             "erro": str(erro)
         }), 500

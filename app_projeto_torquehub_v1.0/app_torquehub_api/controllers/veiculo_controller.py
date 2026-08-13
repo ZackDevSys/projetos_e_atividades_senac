@@ -1,142 +1,162 @@
 from flask import jsonify, request
 
-from services.usuario_service import (
-    buscar_usuarios,
-    buscar_usuario,
-    cadastrar_usuario,
-    atualizar_usuario,
-    excluir_usuario
+from services.veiculo_service import (
+    buscar_veiculos,
+    buscar_veiculo,
+    cadastrar_veiculo,
+    atualizar_veiculo,
+    excluir_veiculo
 )
 
 
 def listar():
+
     try:
-        usuarios = buscar_usuarios()
+        veiculos = buscar_veiculos()
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(usuarios),
-            "dados": usuarios
+            "quantidade": len(veiculos),
+            "dados": veiculos
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários.",
+            "mensagem": "Erro ao buscar veículos.",
             "erro": str(erro)
         }), 500
 
 
 def buscar_por_id(id):
-    try:
-        usuario = buscar_usuario(id)
 
-        if usuario is None:
+    try:
+        veiculo = buscar_veiculo(id)
+
+        if veiculo is None:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Veículo não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": usuario
+            "dados": veiculo
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuário.",
+            "mensagem": "Erro ao buscar veículo.",
             "erro": str(erro)
         }), 500
 
 
 def criar():
+
     try:
-        dados = request.get_json(silent=True)
+
+        dados = request.get_json()
 
         if not dados:
+
             return jsonify({
                 "sucesso": False,
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_usuario = cadastrar_usuario(dados)
+        id_veiculo = cadastrar_veiculo(dados)
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário cadastrado com sucesso.",
-            "id": id_usuario
+            "mensagem": "Veículo cadastrado com sucesso.",
+            "id": id_veiculo
         }), 201
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao cadastrar usuário.",
+            "mensagem": "Erro ao cadastrar veículo.",
             "erro": str(erro)
         }), 500
 
 
 def atualizar(id):
+
     try:
-        dados = request.get_json(silent=True)
+
+        dados = request.get_json()
 
         if not dados:
+
             return jsonify({
                 "sucesso": False,
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_usuario(id, dados)
+        resultado = atualizar_veiculo(id, dados)
 
         if resultado == 0:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Veículo não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atualizado com sucesso."
+            "mensagem": "Veículo atualizado com sucesso."
         }), 200
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar usuário.",
+            "mensagem": "Erro ao atualizar veículo.",
             "erro": str(erro)
         }), 500
 
 
 def excluir(id):
+
     try:
-        resultado = excluir_usuario(id)
+
+        resultado = excluir_veiculo(id)
 
         if resultado == 0:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Veículo não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário excluído com sucesso."
+            "mensagem": "Veículo excluído com sucesso."
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir usuário.",
+            "mensagem": "Erro ao excluir veículo.",
             "erro": str(erro)
         }), 500

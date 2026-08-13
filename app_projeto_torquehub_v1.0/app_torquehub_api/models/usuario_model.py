@@ -4,6 +4,7 @@ class Usuario:
         id=None,
         nome=None,
         email=None,
+        senha=None,
         telefone=None,
         perfil=None,
         especialidade=None,
@@ -13,6 +14,7 @@ class Usuario:
         self.id = id
         self.nome = nome
         self.email = email
+        self.senha = senha
         self.telefone = telefone
         self.perfil = perfil
         self.especialidade = especialidade

@@ -1,58 +1,58 @@
 from flask import jsonify, request
 
-from services.usuario_service import (
-    buscar_usuarios,
-    buscar_usuario,
-    cadastrar_usuario,
-    atualizar_usuario,
-    excluir_usuario
+from services.cliente_service import (
+    buscar_clientes,
+    buscar_cliente,
+    cadastrar_cliente,
+    atualizar_cliente,
+    excluir_cliente
 )
 
 
 def listar():
     try:
-        usuarios = buscar_usuarios()
+        clientes = buscar_clientes()
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(usuarios),
-            "dados": usuarios
+            "quantidade": len(clientes),
+            "dados": clientes
         }), 200
 
     except Exception as erro:
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários.",
+            "mensagem": "Erro ao buscar clientes.",
             "erro": str(erro)
         }), 500
 
 
 def buscar_por_id(id):
     try:
-        usuario = buscar_usuario(id)
+        cliente = buscar_cliente(id)
 
-        if usuario is None:
+        if cliente is None:
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Cliente não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": usuario
+            "dados": cliente
         }), 200
 
     except Exception as erro:
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuário.",
+            "mensagem": "Erro ao buscar cliente.",
             "erro": str(erro)
         }), 500
 
 
 def criar():
     try:
-        dados = request.get_json(silent=True)
+        dados = request.get_json()
 
         if not dados:
             return jsonify({
@@ -60,12 +60,12 @@ def criar():
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_usuario = cadastrar_usuario(dados)
+        id_cliente = cadastrar_cliente(dados)
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário cadastrado com sucesso.",
-            "id": id_usuario
+            "mensagem": "Cliente cadastrado com sucesso.",
+            "id": id_cliente
         }), 201
 
     except ValueError as erro:
@@ -77,14 +77,13 @@ def criar():
     except Exception as erro:
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao cadastrar usuário.",
+            "mensagem": "Erro ao cadastrar cliente.",
             "erro": str(erro)
         }), 500
 
-
 def atualizar(id):
     try:
-        dados = request.get_json(silent=True)
+        dados = request.get_json()
 
         if not dados:
             return jsonify({
@@ -92,17 +91,17 @@ def atualizar(id):
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_usuario(id, dados)
+        resultado = atualizar_cliente(id, dados)
 
         if resultado == 0:
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Cliente não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atualizado com sucesso."
+            "mensagem": "Cliente atualizado com sucesso."
         }), 200
 
     except ValueError as erro:
@@ -114,29 +113,28 @@ def atualizar(id):
     except Exception as erro:
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar usuário.",
+            "mensagem": "Erro ao atualizar cliente.",
             "erro": str(erro)
         }), 500
 
-
 def excluir(id):
     try:
-        resultado = excluir_usuario(id)
+        resultado = excluir_cliente(id)
 
         if resultado == 0:
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Cliente não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário excluído com sucesso."
+            "mensagem": "Cliente excluído com sucesso."
         }), 200
 
     except Exception as erro:
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir usuário.",
+            "mensagem": "Erro ao excluir cliente.",
             "erro": str(erro)
         }), 500

@@ -1,142 +1,167 @@
 from flask import jsonify, request
 
-from services.usuario_service import (
-    buscar_usuarios,
-    buscar_usuario,
-    cadastrar_usuario,
-    atualizar_usuario,
-    excluir_usuario
+from services.ordem_servico_usuario_service import (
+    buscar_ordens_servico_usuario,
+    buscar_ordem_servico_usuario,
+    cadastrar_ordem_servico_usuario,
+    atualizar_ordem_servico_usuario,
+    excluir_ordem_servico_usuario
 )
 
 
 def listar():
+
     try:
-        usuarios = buscar_usuarios()
+
+        atribuicoes = buscar_ordens_servico_usuario()
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(usuarios),
-            "dados": usuarios
+            "quantidade": len(atribuicoes),
+            "dados": atribuicoes
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários.",
+            "mensagem": "Erro ao buscar usuários das ordens de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def buscar_por_id(id):
-    try:
-        usuario = buscar_usuario(id)
 
-        if usuario is None:
+    try:
+
+        atribuicao = buscar_ordem_servico_usuario(id)
+
+        if atribuicao is None:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Atribuição não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": usuario
+            "dados": atribuicao
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuário.",
+            "mensagem": "Erro ao buscar atribuição.",
             "erro": str(erro)
         }), 500
 
 
 def criar():
+
     try:
-        dados = request.get_json(silent=True)
+
+        dados = request.get_json()
 
         if not dados:
+
             return jsonify({
                 "sucesso": False,
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_usuario = cadastrar_usuario(dados)
+        id_atribuicao = cadastrar_ordem_servico_usuario(dados)
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário cadastrado com sucesso.",
-            "id": id_usuario
+            "mensagem": "Usuário atribuído à ordem de serviço com sucesso.",
+            "id": id_atribuicao
         }), 201
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao cadastrar usuário.",
+            "mensagem": "Erro ao atribuir usuário à ordem de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def atualizar(id):
+
     try:
-        dados = request.get_json(silent=True)
+
+        dados = request.get_json()
 
         if not dados:
+
             return jsonify({
                 "sucesso": False,
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_usuario(id, dados)
+        resultado = atualizar_ordem_servico_usuario(
+            id,
+            dados
+        )
 
         if resultado == 0:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Atribuição não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atualizado com sucesso."
+            "mensagem": "Atribuição atualizada com sucesso."
         }), 200
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar usuário.",
+            "mensagem": "Erro ao atualizar atribuição.",
             "erro": str(erro)
         }), 500
 
 
 def excluir(id):
+
     try:
-        resultado = excluir_usuario(id)
+
+        resultado = excluir_ordem_servico_usuario(id)
 
         if resultado == 0:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Atribuição não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário excluído com sucesso."
+            "mensagem": "Atribuição excluída com sucesso."
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir usuário.",
+            "mensagem": "Erro ao excluir atribuição.",
             "erro": str(erro)
         }), 500

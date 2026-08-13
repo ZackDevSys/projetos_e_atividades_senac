@@ -1,142 +1,164 @@
 from flask import jsonify, request
 
-from services.usuario_service import (
-    buscar_usuarios,
-    buscar_usuario,
-    cadastrar_usuario,
-    atualizar_usuario,
-    excluir_usuario
+from services.ordem_servico_service import (
+    buscar_ordens,
+    buscar_ordem,
+    cadastrar_ordem,
+    atualizar_ordem,
+    excluir_ordem
 )
 
 
 def listar():
+
     try:
-        usuarios = buscar_usuarios()
+
+        ordens = buscar_ordens()
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(usuarios),
-            "dados": usuarios
+            "quantidade": len(ordens),
+            "dados": ordens
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários.",
+            "mensagem": "Erro ao buscar ordens de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def buscar_por_id(id):
-    try:
-        usuario = buscar_usuario(id)
 
-        if usuario is None:
+    try:
+
+        ordem = buscar_ordem(id)
+
+        if ordem is None:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Ordem de serviço não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": usuario
+            "dados": ordem
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuário.",
+            "mensagem": "Erro ao buscar ordem de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def criar():
+
     try:
-        dados = request.get_json(silent=True)
+
+        dados = request.get_json()
 
         if not dados:
+
             return jsonify({
                 "sucesso": False,
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_usuario = cadastrar_usuario(dados)
+        id_ordem = cadastrar_ordem(dados)
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário cadastrado com sucesso.",
-            "id": id_usuario
+            "mensagem": "Ordem de serviço criada com sucesso.",
+            "id": id_ordem
         }), 201
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao cadastrar usuário.",
+            "mensagem": "Erro ao criar ordem de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def atualizar(id):
+
     try:
-        dados = request.get_json(silent=True)
+
+        dados = request.get_json()
 
         if not dados:
+
             return jsonify({
                 "sucesso": False,
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_usuario(id, dados)
+        resultado = atualizar_ordem(id, dados)
 
         if resultado == 0:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Ordem de serviço não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atualizado com sucesso."
+            "mensagem": "Ordem de serviço atualizada com sucesso."
         }), 200
 
     except ValueError as erro:
+
         return jsonify({
             "sucesso": False,
             "mensagem": str(erro)
         }), 400
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar usuário.",
+            "mensagem": "Erro ao atualizar ordem de serviço.",
             "erro": str(erro)
         }), 500
 
 
 def excluir(id):
+
     try:
-        resultado = excluir_usuario(id)
+
+        resultado = excluir_ordem(id)
 
         if resultado == 0:
+
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Usuário não encontrado."
+                "mensagem": "Ordem de serviço não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário excluído com sucesso."
+            "mensagem": "Ordem de serviço excluída com sucesso."
         }), 200
 
     except Exception as erro:
+
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir usuário.",
+            "mensagem": "Erro ao excluir ordem de serviço.",
             "erro": str(erro)
         }), 500
