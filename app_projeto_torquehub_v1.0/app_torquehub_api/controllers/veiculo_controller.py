@@ -8,7 +8,6 @@ from services.veiculo_service import (
     excluir_veiculo
 )
 
-
 def listar():
 
     try:
@@ -27,7 +26,6 @@ def listar():
             "mensagem": "Erro ao buscar veículos.",
             "erro": str(erro)
         }), 500
-
 
 def buscar_por_id(id):
 
@@ -53,7 +51,6 @@ def buscar_por_id(id):
             "mensagem": "Erro ao buscar veículo.",
             "erro": str(erro)
         }), 500
-
 
 def criar():
 
@@ -90,7 +87,6 @@ def criar():
             "mensagem": "Erro ao cadastrar veículo.",
             "erro": str(erro)
         }), 500
-
 
 def atualizar(id):
 
@@ -133,7 +129,6 @@ def atualizar(id):
             "mensagem": "Erro ao atualizar veículo.",
             "erro": str(erro)
         }), 500
-
 
 def excluir(id):
 

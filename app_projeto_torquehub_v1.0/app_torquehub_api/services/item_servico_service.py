@@ -10,14 +10,11 @@ from repositories.item_servico_repository import (
     recalcular_total_ordem
 )
 
-
 def listar_itens(ordem_servico_id):
     return listar_itens_por_ordem(ordem_servico_id)
 
-
 def buscar_item(id):
     return buscar_item_por_id(id)
-
 
 def cadastrar_item(ordem_servico_id, dados):
 
@@ -55,7 +52,6 @@ def cadastrar_item(ordem_servico_id, dados):
     recalcular_total_ordem(ordem_servico_id)
 
     return id_item
-
 
 def atualizar_item(id, dados):
 
@@ -98,7 +94,6 @@ def atualizar_item(id, dados):
     recalcular_total_ordem(item["ordem_servico_id"])
 
     return resultado
-
 
 def excluir_item(id):
 

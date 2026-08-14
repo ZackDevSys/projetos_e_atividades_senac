@@ -6,20 +6,16 @@ from repositories.servico_repository import (
     excluir_servico as excluir_servico_repository
 )
 
-
 STATUS_SERVICO = [
     "ATIVO",
     "INATIVO"
 ]
 
-
 def buscar_servicos():
     return listar_servicos()
 
-
 def buscar_servico(id):
     return buscar_servico_por_id(id)
-
 
 def validar_dados(dados):
 
@@ -77,13 +73,11 @@ def validar_dados(dados):
         status
     )
 
-
 def cadastrar_servico(dados):
 
     valores = validar_dados(dados)
 
     return criar_servico(*valores)
-
 
 def atualizar_servico(id, dados):
 
@@ -93,7 +87,6 @@ def atualizar_servico(id, dados):
         id,
         *valores
     )
-
 
 def excluir_servico(id):
 

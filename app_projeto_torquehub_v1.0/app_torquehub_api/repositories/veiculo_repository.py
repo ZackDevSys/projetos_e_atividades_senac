@@ -1,6 +1,5 @@
 from config.database import get_connection
 
-
 def listar_veiculos():
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -31,7 +30,6 @@ def listar_veiculos():
         cursor.close()
         conexao.close()
 
-
 def buscar_veiculo_por_id(id):
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -61,7 +59,6 @@ def buscar_veiculo_por_id(id):
     finally:
         cursor.close()
         conexao.close()
-
 
 def criar_veiculo(
     cliente_id,
@@ -123,7 +120,6 @@ def criar_veiculo(
         cursor.close()
         conexao.close()
 
-
 def atualizar_veiculo(
     id,
     cliente_id,
@@ -183,7 +179,6 @@ def atualizar_veiculo(
         cursor.close()
         conexao.close()
 
-
 def excluir_veiculo(id):
     conexao = get_connection()
     cursor = conexao.cursor()
@@ -202,7 +197,6 @@ def excluir_veiculo(id):
     finally:
         cursor.close()
         conexao.close()
-
 
 def cliente_existe(cliente_id):
     conexao = get_connection()

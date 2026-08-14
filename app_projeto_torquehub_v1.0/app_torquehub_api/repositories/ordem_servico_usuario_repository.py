@@ -1,6 +1,5 @@
 from config.database import get_connection
 
-
 def listar_atribuicoes():
 
     conexao = get_connection()
@@ -30,7 +29,6 @@ def listar_atribuicoes():
         cursor.close()
         conexao.close()
 
-
 def buscar_atribuicao_por_id(id):
 
     conexao = get_connection()
@@ -59,7 +57,6 @@ def buscar_atribuicao_por_id(id):
 
         cursor.close()
         conexao.close()
-
 
 def criar_atribuicao(
     ordem_servico_id,
@@ -101,7 +98,6 @@ def criar_atribuicao(
         cursor.close()
         conexao.close()
 
-
 def atualizar_atribuicao(
     id,
     usuario_id,
@@ -140,7 +136,6 @@ def atualizar_atribuicao(
 
         cursor.close()
         conexao.close()
-
 
 def excluir_atribuicao(id):
 

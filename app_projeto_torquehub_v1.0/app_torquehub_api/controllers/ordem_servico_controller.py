@@ -8,7 +8,6 @@ from services.ordem_servico_service import (
     excluir_ordem
 )
 
-
 def listar():
 
     try:
@@ -28,7 +27,6 @@ def listar():
             "mensagem": "Erro ao buscar ordens de serviço.",
             "erro": str(erro)
         }), 500
-
 
 def buscar_por_id(id):
 
@@ -55,7 +53,6 @@ def buscar_por_id(id):
             "mensagem": "Erro ao buscar ordem de serviço.",
             "erro": str(erro)
         }), 500
-
 
 def criar():
 
@@ -92,7 +89,6 @@ def criar():
             "mensagem": "Erro ao criar ordem de serviço.",
             "erro": str(erro)
         }), 500
-
 
 def atualizar(id):
 
@@ -135,7 +131,6 @@ def atualizar(id):
             "mensagem": "Erro ao atualizar ordem de serviço.",
             "erro": str(erro)
         }), 500
-
 
 def excluir(id):
 

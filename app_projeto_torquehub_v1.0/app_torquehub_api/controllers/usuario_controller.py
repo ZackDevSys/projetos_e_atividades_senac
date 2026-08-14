@@ -8,7 +8,6 @@ from services.usuario_service import (
     excluir_usuario
 )
 
-
 def listar():
     try:
         usuarios = buscar_usuarios()
@@ -25,7 +24,6 @@ def listar():
             "mensagem": "Erro ao buscar usuários.",
             "erro": str(erro)
         }), 500
-
 
 def buscar_por_id(id):
     try:
@@ -48,7 +46,6 @@ def buscar_por_id(id):
             "mensagem": "Erro ao buscar usuário.",
             "erro": str(erro)
         }), 500
-
 
 def criar():
     try:
@@ -80,7 +77,6 @@ def criar():
             "mensagem": "Erro ao cadastrar usuário.",
             "erro": str(erro)
         }), 500
-
 
 def atualizar(id):
     try:
@@ -117,7 +113,6 @@ def atualizar(id):
             "mensagem": "Erro ao atualizar usuário.",
             "erro": str(erro)
         }), 500
-
 
 def excluir(id):
     try:

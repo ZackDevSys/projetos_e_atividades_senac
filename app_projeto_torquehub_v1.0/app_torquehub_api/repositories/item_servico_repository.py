@@ -1,6 +1,5 @@
 from config.database import get_connection
 
-
 def listar_itens_por_ordem(ordem_servico_id):
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -29,7 +28,6 @@ def listar_itens_por_ordem(ordem_servico_id):
         cursor.close()
         conexao.close()
 
-
 def buscar_item_por_id(id):
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -57,7 +55,6 @@ def buscar_item_por_id(id):
         cursor.close()
         conexao.close()
 
-
 def buscar_servico_por_id(servico_id):
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -80,7 +77,6 @@ def buscar_servico_por_id(servico_id):
     finally:
         cursor.close()
         conexao.close()
-
 
 def criar_item(
     ordem_servico_id,
@@ -118,7 +114,6 @@ def criar_item(
         cursor.close()
         conexao.close()
 
-
 def atualizar_item(
     id,
     servico_id,
@@ -154,7 +149,6 @@ def atualizar_item(
         cursor.close()
         conexao.close()
 
-
 def excluir_item(id):
     conexao = get_connection()
     cursor = conexao.cursor()
@@ -172,7 +166,6 @@ def excluir_item(id):
     finally:
         cursor.close()
         conexao.close()
-
 
 def recalcular_total_ordem(ordem_servico_id):
     conexao = get_connection()

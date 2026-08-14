@@ -1,10 +1,8 @@
 from werkzeug.security import generate_password_hash
-
 from config.perfis import (
     perfil_valido,
     status_valido
 )
-
 from repositories.usuario_repository import (
     listar_usuarios,
     buscar_usuario_por_id,
@@ -13,14 +11,11 @@ from repositories.usuario_repository import (
     excluir_usuario as excluir_usuario_repository
 )
 
-
 def buscar_usuarios():
     return listar_usuarios()
 
-
 def buscar_usuario(id):
     return buscar_usuario_por_id(id)
-
 
 def cadastrar_usuario(dados):
 
@@ -81,7 +76,6 @@ def cadastrar_usuario(dados):
         especialidade,
         status
     )
-
 
 def atualizar_usuario(id, dados):
 
@@ -144,7 +138,6 @@ def atualizar_usuario(id, dados):
         especialidade,
         status
     )
-
 
 def excluir_usuario(id):
     return excluir_usuario_repository(id)

@@ -1,30 +1,30 @@
 from flask import jsonify, request
 
-from services.ordem_servico_usuario_service import (
-    buscar_ordens_servico_usuario,
-    buscar_ordem_servico_usuario,
-    cadastrar_ordem_servico_usuario,
-    atualizar_ordem_servico_usuario,
-    excluir_ordem_servico_usuario
+from services.item_peca_service import (
+    buscar_itens_pecas,
+    buscar_item_peca,
+    cadastrar_item_peca,
+    atualizar_item_peca_service,
+    excluir_item_peca_service
 )
 
 def listar():
 
     try:
 
-        atribuicoes = buscar_ordens_servico_usuario()
+        itens = buscar_itens_pecas()
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(atribuicoes),
-            "dados": atribuicoes
+            "quantidade": len(itens),
+            "dados": itens
         }), 200
 
     except Exception as erro:
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários das ordens de serviço.",
+            "mensagem": "Erro ao buscar itens de peças.",
             "erro": str(erro)
         }), 500
 
@@ -32,25 +32,25 @@ def buscar_por_id(id):
 
     try:
 
-        atribuicao = buscar_ordem_servico_usuario(id)
+        item = buscar_item_peca(id)
 
-        if atribuicao is None:
+        if item is None:
 
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Atribuição não encontrada."
+                "mensagem": "Item de peça não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": atribuicao
+            "dados": item
         }), 200
 
     except Exception as erro:
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar atribuição.",
+            "mensagem": "Erro ao buscar item de peça.",
             "erro": str(erro)
         }), 500
 
@@ -67,12 +67,12 @@ def criar():
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_atribuicao = cadastrar_ordem_servico_usuario(dados)
+        id_item = cadastrar_item_peca(dados)
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atribuído à ordem de serviço com sucesso.",
-            "id": id_atribuicao
+            "mensagem": "Item de peça criado com sucesso.",
+            "id": id_item
         }), 201
 
     except ValueError as erro:
@@ -86,7 +86,7 @@ def criar():
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atribuir usuário à ordem de serviço.",
+            "mensagem": "Erro ao criar item de peça.",
             "erro": str(erro)
         }), 500
 
@@ -103,7 +103,7 @@ def atualizar(id):
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_ordem_servico_usuario(
+        resultado = atualizar_item_peca_service(
             id,
             dados
         )
@@ -112,12 +112,12 @@ def atualizar(id):
 
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Atribuição não encontrada."
+                "mensagem": "Item de peça não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Atribuição atualizada com sucesso."
+            "mensagem": "Item de peça atualizado com sucesso."
         }), 200
 
     except ValueError as erro:
@@ -131,7 +131,7 @@ def atualizar(id):
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar atribuição.",
+            "mensagem": "Erro ao atualizar item de peça.",
             "erro": str(erro)
         }), 500
 
@@ -139,24 +139,24 @@ def excluir(id):
 
     try:
 
-        resultado = excluir_ordem_servico_usuario(id)
+        resultado = excluir_item_peca_service(id)
 
         if resultado == 0:
 
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Atribuição não encontrada."
+                "mensagem": "Item de peça não encontrado."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Atribuição excluída com sucesso."
+            "mensagem": "Item de peça excluído com sucesso."
         }), 200
 
     except Exception as erro:
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir atribuição.",
+            "mensagem": "Erro ao excluir item de peça.",
             "erro": str(erro)
         }), 500

@@ -1,6 +1,5 @@
 from config.database import get_connection
 
-
 def listar_clientes():
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)

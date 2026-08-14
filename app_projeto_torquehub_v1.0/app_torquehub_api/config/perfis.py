@@ -11,6 +11,10 @@ STATUS_VALIDOS = [
     "INATIVO"
 ]
 
+PERFIS_MOVIMENTACAO_ESTOQUE = [
+    "ADMINISTRADOR",
+    "ESTOQUISTA"
+]
 
 def perfil_valido(perfil):
     return perfil in PERFIS_VALIDOS

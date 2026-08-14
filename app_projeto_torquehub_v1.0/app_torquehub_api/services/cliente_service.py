@@ -9,10 +9,8 @@ from repositories.cliente_repository import (
 def buscar_clientes():
     return listar_clientes()
 
-
 def buscar_cliente(id):
     return buscar_cliente_por_id(id)
-
 
 def cadastrar_cliente(dados):
     nome = dados.get("nome")

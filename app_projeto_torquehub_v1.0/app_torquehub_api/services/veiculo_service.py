@@ -7,7 +7,6 @@ from repositories.veiculo_repository import (
     cliente_existe
 )
 
-
 TIPOS_VEICULO = [
     "MOTOCICLETA",
     "CARRO",
@@ -17,20 +16,16 @@ TIPOS_VEICULO = [
     "OUTRO"
 ]
 
-
 STATUS_VEICULO = [
     "ATIVO",
     "INATIVO"
 ]
 
-
 def buscar_veiculos():
     return listar_veiculos()
 
-
 def buscar_veiculo(id):
     return buscar_veiculo_por_id(id)
-
 
 def validar_dados(dados):
 
@@ -116,13 +111,11 @@ def validar_dados(dados):
         status
     )
 
-
 def cadastrar_veiculo(dados):
 
     valores = validar_dados(dados)
 
     return criar_veiculo(*valores)
-
 
 def atualizar_veiculo(id, dados):
 
@@ -132,7 +125,6 @@ def atualizar_veiculo(id, dados):
         id,
         *valores
     )
-
 
 def excluir_veiculo(id):
 

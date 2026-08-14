@@ -5,9 +5,7 @@ from repositories.ordem_servico_repository import (
     atualizar_ordem_servico as atualizar_repository,
     excluir_ordem_servico as excluir_repository
 )
-
 from config.database import get_connection
-
 
 STATUS_VALIDOS = [
     "ABERTA",
@@ -19,7 +17,6 @@ STATUS_VALIDOS = [
     "ENTREGUE",
     "CANCELADA"
 ]
-
 
 def validar_status(status):
 
@@ -34,7 +31,6 @@ def validar_status(status):
         )
 
     return status
-
 
 def validar_usuarios(usuarios):
 
@@ -68,7 +64,6 @@ def validar_usuarios(usuarios):
             )
 
         verificar_usuario(usuario_id, perfil)
-
 
 def verificar_usuario(usuario_id, perfil):
 
@@ -113,16 +108,13 @@ def verificar_usuario(usuario_id, perfil):
         cursor.close()
         conexao.close()
 
-
 def buscar_ordens():
 
     return listar_ordens_servico()
 
-
 def buscar_ordem(id):
 
     return buscar_ordem_servico_por_id(id)
-
 
 def cadastrar_ordem(dados):
 
@@ -166,7 +158,6 @@ def cadastrar_ordem(dados):
         usuarios
     )
 
-
 def atualizar_ordem(id, dados):
 
     veiculo_id = dados.get("veiculo_id")
@@ -199,7 +190,6 @@ def atualizar_ordem(id, dados):
         dados.get("valor_total", 0),
         usuarios
     )
-
 
 def excluir_ordem(id):
 

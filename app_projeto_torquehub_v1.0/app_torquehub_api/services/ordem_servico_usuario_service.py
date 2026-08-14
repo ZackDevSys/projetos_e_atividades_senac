@@ -5,9 +5,7 @@ from repositories.ordem_servico_usuario_repository import (
     atualizar_atribuicao,
     excluir_atribuicao
 )
-
 from config.database import get_connection
-
 
 def buscar_usuarios(usuario_id):
 
@@ -53,16 +51,13 @@ def verificar_ordem_servico(ordem_servico_id):
         cursor.close()
         conexao.close()
 
-
 def buscar_ordens_servico_usuario():
 
     return listar_atribuicoes()
 
-
 def buscar_ordem_servico_usuario(id):
 
     return buscar_atribuicao_por_id(id)
-
 
 def cadastrar_ordem_servico_usuario(dados):
 
@@ -106,7 +101,6 @@ def cadastrar_ordem_servico_usuario(dados):
         observacoes
     )
 
-
 def atualizar_ordem_servico_usuario(id, dados):
 
     usuario_id = dados.get("usuario_id")
@@ -137,7 +131,6 @@ def atualizar_ordem_servico_usuario(id, dados):
         perfil,
         observacoes
     )
-
 
 def excluir_ordem_servico_usuario(id):
 
