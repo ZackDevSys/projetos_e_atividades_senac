@@ -72,7 +72,7 @@ CREATE TABLE `itens_pecas` (
   CONSTRAINT `chk_item_peca_quantidade` CHECK (`quantidade` > 0),
   CONSTRAINT `chk_item_peca_valor` CHECK (`valor_unitario` >= 0),
   CONSTRAINT `chk_item_peca_total` CHECK (`valor_total` >= 0)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ CREATE TABLE `movimentacoes_estoque` (
   CONSTRAINT `fk_movimentacao_peca` FOREIGN KEY (`peca_id`) REFERENCES `pecas` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `fk_movimentacao_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `chk_movimentacao_quantidade` CHECK (`quantidade` > 0)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `movimentacoes_estoque` (
 
 LOCK TABLES `movimentacoes_estoque` WRITE;
 /*!40000 ALTER TABLE `movimentacoes_estoque` DISABLE KEYS */;
-INSERT INTO `movimentacoes_estoque` VALUES (1,1,1,'ENTRADA',10,'2026-08-12 14:07:50','Reposição inicial de estoque');
+INSERT INTO `movimentacoes_estoque` VALUES (1,1,1,'ENTRADA',10,'2026-08-12 14:07:50','Reposição inicial de estoque'),(3,1,1,'SAIDA',2,'2026-08-14 00:27:08','Teste de saída de estoque'),(4,1,4,'ENTRADA',2,'2026-08-14 00:50:12','Teste de permissão do estoquista');
 /*!40000 ALTER TABLE `movimentacoes_estoque` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,7 +241,7 @@ DROP TABLE IF EXISTS `pecas`;
 CREATE TABLE `pecas` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `codigo` varchar(50) NOT NULL,
-  `nome` varchar(100) NOT NULL,
+  `nome_produto` varchar(100) NOT NULL,
   `fabricante` varchar(100) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   `preco_custo` decimal(10,2) NOT NULL DEFAULT 0.00,
@@ -254,7 +254,7 @@ CREATE TABLE `pecas` (
   CONSTRAINT `chk_peca_preco_custo` CHECK (`preco_custo` >= 0),
   CONSTRAINT `chk_peca_preco_venda` CHECK (`preco_venda` >= 0),
   CONSTRAINT `chk_peca_estoque_minimo` CHECK (`estoque_minimo` >= 0)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,7 +263,7 @@ CREATE TABLE `pecas` (
 
 LOCK TABLES `pecas` WRITE;
 /*!40000 ALTER TABLE `pecas` DISABLE KEYS */;
-INSERT INTO `pecas` VALUES (1,'OL10W40','Óleo 10W40','Motul','Óleo para motor',32.00,45.00,20,5,'ATIVO'),(2,'FIL-OLEO-001','Filtro de óleo','Original','Filtro de óleo para motocicletas',18.00,28.00,15,5,'ATIVO'),(3,'VELA-NGK-001','Vela de ignição','NGK','Vela de ignição',22.00,35.00,10,3,'ATIVO'),(4,'FIL-AR-001','Filtro de ar','Original','Filtro de ar',30.00,50.00,8,3,'ATIVO'),(5,'PAS-FREIO-001','Pastilha de freio','Cobreq','Pastilha de freio dianteira',55.00,90.00,6,2,'ATIVO');
+INSERT INTO `pecas` VALUES (1,'OL10W40','Óleo 10W40','Motul','Óleo para motor',32.00,45.00,20,5,'ATIVO'),(2,'FIL-OLEO-001','Filtro de óleo','Original','Filtro de óleo para motocicletas',18.00,28.00,15,5,'ATIVO'),(3,'VELA-NGK-001','Vela de ignição','NGK','Vela de ignição',22.00,35.00,10,3,'ATIVO'),(4,'FIL-AR-001','Filtro de ar','Original','Filtro de ar',30.00,50.00,8,3,'ATIVO'),(6,'VELA-001','Vela de ignição','NGK','Vela de ignição para motocicletas',22.00,35.00,0,5,'ATIVO');
 /*!40000 ALTER TABLE `pecas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,7 +327,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Administrador TorqueHub','admin@torquehub.local','Admin@123','(31) 99999-9999','ADMINISTRADOR',NULL,'ATIVO','2026-08-12 13:40:45'),(2,'Carlos Silva','carlos@torquehub.local','TEMPORARIO','(31) 98888-1111','MECANICO','Motor e Injeção Eletrônica','ATIVO','2026-08-12 13:40:45'),(3,'Rafael Souza','rafael@torquehub.local','TEMPORARIO','(31) 97777-2222','MECANICO','Freios e Suspensão','ATIVO','2026-08-12 13:40:45'),(4,'Carlos','carlos@torquehub.com','scrypt:32768:8:1$dJxYdS7s1H8THBLf$60089d86ee2cacb3384e24a8b406830909d1789b67e93ec1ac2f0c2c45942ae683fc01ece26c9305efad95eb9fd0394dadd218dbc3958ad5816e1e9bca75c5ae','31988888888','ESTOQUISTA',NULL,'ATIVO','2026-08-12 13:40:45'),(6,'João Mecânico','joao.mecanico@torquehub.com','scrypt:32768:8:1$w7CgTwEySlVOaP0a$23158b63ee2760b8f0126955b0a7c0ad15aadae820bea774704b45185d7a15fec938f70a868c42ae09bf579de0c98d6b686a9cbe97234c5e0a95f8a9f8935bdc','31999999999','MECANICO','Injeção eletrônica','ATIVO','2026-08-13 15:21:03'),(7,'Carlos Estoquista','carlos.estoque@torquehub.com','scrypt:32768:8:1$yt9KcQ1JihKW0B5m$136ae86723cf110b9f08d0cf0aa70595d0763fda2ce98c3556b55301502dcef252214d997e1ce79ed966428a2c5157a5b76e454635577d71889d7f14b45c3b6b','31888888888','ESTOQUISTA',NULL,'ATIVO','2026-08-13 15:21:25'),(8,'Maria Atendente','maria.atendimento@torquehub.com','scrypt:32768:8:1$snOrBa6ajw64mm6W$e72e743dc86f56b60d1efd36fc9c2863dc41a342a5e641c9df3a317ce9107f403763c1521b0c282c6a8ff98938ed14833955c32963844f14fb7f9eda61d9d8ae','31777777777','ATENDENTE',NULL,'ATIVO','2026-08-13 15:21:43');
+INSERT INTO `usuarios` VALUES (1,'Administrador TorqueHub','admin@torquehub.local','scrypt:32768:8:1$HzdJfg3hu9eaWvL1$2a8bf2687c9c65c4bf199d70619e3b139c6aa7e96b825b7149686a1c09f14cfe968e4c44e7792c34c37a907dbb7ccf0fe6cb8c01c56945aa8a81855db037989d','(31) 99999-9999','ADMINISTRADOR',NULL,'ATIVO','2026-08-12 13:40:45'),(2,'Carlos Silva','carlos@torquehub.local','scrypt:32768:8:1$tevlEEWgY7yXb2hn$95f9742959b99f355d1bfaa56eeb0358bc0c51624833166871e2832b9faaaa37c87242bdcaa22a2c98d0b2ac74b1e99b2e0a5a9558c974a855677248746761b0','(31) 99459-9999','MECANICO','Motor e Injeção Eletrônica','ATIVO','2026-08-12 13:40:45'),(3,'Rafael Souza','rafael@torquehub.local','scrypt:32768:8:1$WkMf9B9wE8LV2sZf$d2214962edc914b94f04a736afaa3b5231702f583a0de65f02e3338c877327804cc457d6513d0971179d67c374db773af1025ceb813da9b1060f73f51d296455','(31) 99459-9249','MECANICO','Freios e Suspensão','ATIVO','2026-08-12 13:40:45'),(4,'Carlos','carlos@torquehub.com','scrypt:32768:8:1$dJxYdS7s1H8THBLf$60089d86ee2cacb3384e24a8b406830909d1789b67e93ec1ac2f0c2c45942ae683fc01ece26c9305efad95eb9fd0394dadd218dbc3958ad5816e1e9bca75c5ae','31988888888','ESTOQUISTA',NULL,'ATIVO','2026-08-12 13:40:45'),(6,'João Mecânico','joao.mecanico@torquehub.com','scrypt:32768:8:1$w7CgTwEySlVOaP0a$23158b63ee2760b8f0126955b0a7c0ad15aadae820bea774704b45185d7a15fec938f70a868c42ae09bf579de0c98d6b686a9cbe97234c5e0a95f8a9f8935bdc','31999999999','MECANICO','Injeção eletrônica','ATIVO','2026-08-13 15:21:03'),(7,'Carlos Estoquista','carlos.estoque@torquehub.com','scrypt:32768:8:1$yt9KcQ1JihKW0B5m$136ae86723cf110b9f08d0cf0aa70595d0763fda2ce98c3556b55301502dcef252214d997e1ce79ed966428a2c5157a5b76e454635577d71889d7f14b45c3b6b','31888888888','ESTOQUISTA',NULL,'ATIVO','2026-08-13 15:21:25'),(8,'Maria Atendente','maria.atendimento@torquehub.com','scrypt:32768:8:1$snOrBa6ajw64mm6W$e72e743dc86f56b60d1efd36fc9c2863dc41a342a5e641c9df3a317ce9107f403763c1521b0c282c6a8ff98938ed14833955c32963844f14fb7f9eda61d9d8ae','31777777777','ATENDENTE',NULL,'ATIVO','2026-08-13 15:21:43');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -381,4 +381,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-08-13 17:34:04
+-- Dump completed on 2026-08-14 16:55:00
