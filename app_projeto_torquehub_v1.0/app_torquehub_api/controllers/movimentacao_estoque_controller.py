@@ -1,30 +1,30 @@
 from flask import jsonify, request
 
-from services.ordem_servico_usuario_service import (
-    buscar_ordens_servico_usuario,
-    buscar_ordem_servico_usuario,
-    cadastrar_ordem_servico_usuario,
-    atualizar_ordem_servico_usuario,
-    excluir_ordem_servico_usuario
+from services.movimentacao_estoque_service import (
+    buscar_movimentacoes,
+    buscar_movimentacao,
+    cadastrar_movimentacao,
+    atualizar_movimentacao_service,
+    excluir_movimentacao_service
 )
 
 def listar():
 
     try:
 
-        atribuicoes = buscar_ordens_servico_usuario()
+        movimentacoes = buscar_movimentacoes()
 
         return jsonify({
             "sucesso": True,
-            "quantidade": len(atribuicoes),
-            "dados": atribuicoes
+            "quantidade": len(movimentacoes),
+            "dados": movimentacoes
         }), 200
 
     except Exception as erro:
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar usuários das ordens de serviço.",
+            "mensagem": "Erro ao buscar movimentações de estoque.",
             "erro": str(erro)
         }), 500
 
@@ -32,25 +32,25 @@ def buscar_por_id(id):
 
     try:
 
-        atribuicao = buscar_ordem_servico_usuario(id)
+        movimentacao = buscar_movimentacao(id)
 
-        if atribuicao is None:
+        if movimentacao is None:
 
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Atribuição não encontrada."
+                "mensagem": "Movimentação não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "dados": atribuicao
+            "dados": movimentacao
         }), 200
 
     except Exception as erro:
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao buscar atribuição.",
+            "mensagem": "Erro ao buscar movimentação.",
             "erro": str(erro)
         }), 500
 
@@ -67,12 +67,12 @@ def criar():
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        id_atribuicao = cadastrar_ordem_servico_usuario(dados)
+        id_movimentacao = cadastrar_movimentacao(dados)
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Usuário atribuído à ordem de serviço com sucesso.",
-            "id": id_atribuicao
+            "mensagem": "Movimentação registrada com sucesso.",
+            "id": id_movimentacao
         }), 201
 
     except ValueError as erro:
@@ -86,7 +86,7 @@ def criar():
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atribuir usuário à ordem de serviço.",
+            "mensagem": "Erro ao registrar movimentação.",
             "erro": str(erro)
         }), 500
 
@@ -103,7 +103,7 @@ def atualizar(id):
                 "mensagem": "Nenhum dado foi enviado."
             }), 400
 
-        resultado = atualizar_ordem_servico_usuario(
+        resultado = atualizar_movimentacao_service(
             id,
             dados
         )
@@ -112,12 +112,12 @@ def atualizar(id):
 
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Atribuição não encontrada."
+                "mensagem": "Movimentação não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Atribuição atualizada com sucesso."
+            "mensagem": "Movimentação atualizada com sucesso."
         }), 200
 
     except ValueError as erro:
@@ -131,7 +131,7 @@ def atualizar(id):
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao atualizar atribuição.",
+            "mensagem": "Erro ao atualizar movimentação.",
             "erro": str(erro)
         }), 500
 
@@ -139,24 +139,31 @@ def excluir(id):
 
     try:
 
-        resultado = excluir_ordem_servico_usuario(id)
+        resultado = excluir_movimentacao_service(id)
 
         if resultado == 0:
 
             return jsonify({
                 "sucesso": False,
-                "mensagem": "Atribuição não encontrada."
+                "mensagem": "Movimentação não encontrada."
             }), 404
 
         return jsonify({
             "sucesso": True,
-            "mensagem": "Atribuição excluída com sucesso."
+            "mensagem": "Movimentação excluída com sucesso."
         }), 200
+
+    except ValueError as erro:
+
+        return jsonify({
+            "sucesso": False,
+            "mensagem": str(erro)
+        }), 400
 
     except Exception as erro:
 
         return jsonify({
             "sucesso": False,
-            "mensagem": "Erro ao excluir atribuição.",
+            "mensagem": "Erro ao excluir movimentação.",
             "erro": str(erro)
         }), 500

@@ -1,6 +1,5 @@
 from config.database import get_connection
 
-
 def listar_ordens_servico():
 
     conexao = get_connection()
@@ -55,7 +54,6 @@ def listar_ordens_servico():
         cursor.close()
         conexao.close()
 
-
 def buscar_ordem_servico_por_id(id):
 
     conexao = get_connection()
@@ -109,7 +107,6 @@ def buscar_ordem_servico_por_id(id):
 
         cursor.close()
         conexao.close()
-
 
 def criar_ordem_servico(
     numero,
@@ -203,7 +200,6 @@ def criar_ordem_servico(
 
         cursor.close()
         conexao.close()
-
 
 def atualizar_ordem_servico(
     id,
@@ -299,7 +295,6 @@ def atualizar_ordem_servico(
 
         cursor.close()
         conexao.close()
-
 
 def excluir_ordem_servico(id):
 

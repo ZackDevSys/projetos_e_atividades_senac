@@ -1,12 +1,10 @@
 from flask import Blueprint, jsonify
 
-
 status_routes = Blueprint(
     "status_routes",
     __name__,
     url_prefix="/api"
 )
-
 
 @status_routes.route("/status", methods=["GET"])
 def status():

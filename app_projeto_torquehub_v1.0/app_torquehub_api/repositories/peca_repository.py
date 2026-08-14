@@ -1,138 +1,184 @@
 from config.database import get_connection
 
-def listar_servicos():
+def listar_pecas():
+
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
 
     try:
+
         cursor.execute("""
             SELECT
                 id,
-                nome,
+                codigo,
+                nome_produto,
+                fabricante,
                 descricao,
-                valor_base,
-                tempo_estimado,
+                preco_custo,
+                preco_venda,
+                estoque_atual,
+                estoque_minimo,
                 status
-            FROM servicos
+            FROM pecas
             ORDER BY id DESC
         """)
 
         return cursor.fetchall()
 
     finally:
+
         cursor.close()
         conexao.close()
 
-def buscar_servico_por_id(id):
+def buscar_peca_por_id(id):
+
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
 
     try:
+
         cursor.execute("""
             SELECT
                 id,
-                nome,
+                codigo,
+                nome_produto,
+                fabricante,
                 descricao,
-                valor_base,
-                tempo_estimado,
+                preco_custo,
+                preco_venda,
+                estoque_atual,
+                estoque_minimo,
                 status
-            FROM servicos
+            FROM pecas
             WHERE id = %s
         """, (id,))
 
         return cursor.fetchone()
 
     finally:
+
         cursor.close()
         conexao.close()
 
-def criar_servico(
-    nome,
+def criar_peca(
+    codigo,
+    nome_produto,
+    fabricante,
     descricao,
-    valor_base,
-    tempo_estimado,
+    preco_custo,
+    preco_venda,
+    estoque_minimo,
     status
 ):
+
     conexao = get_connection()
     cursor = conexao.cursor()
 
     try:
+
         sql = """
-            INSERT INTO servicos (
-                nome,
+            INSERT INTO pecas (
+                codigo,
+                nome_produto,
+                fabricante,
                 descricao,
-                valor_base,
-                tempo_estimado,
+                preco_custo,
+                preco_venda,
+                estoque_atual,
+                estoque_minimo,
                 status
             )
-            VALUES (%s, %s, %s, %s, %s)
+            VALUES (
+                %s, %s, %s, %s, %s, %s, %s, %s, %s
+            )
         """
 
         valores = (
-            nome,
+            codigo,
+            nome_produto,
+            fabricante,
             descricao,
-            valor_base,
-            tempo_estimado,
+            preco_custo,
+            preco_venda,
+            0,
+            estoque_minimo,
             status
         )
 
         cursor.execute(sql, valores)
+
         conexao.commit()
 
         return cursor.lastrowid
 
     finally:
+
         cursor.close()
         conexao.close()
 
-def atualizar_servico(
+def atualizar_peca(
     id,
-    nome,
+    codigo,
+    nome_produto,
+    fabricante,
     descricao,
-    valor_base,
-    tempo_estimado,
+    preco_custo,
+    preco_venda,
+    estoque_minimo,
     status
 ):
+
     conexao = get_connection()
     cursor = conexao.cursor()
 
     try:
+
         sql = """
-            UPDATE servicos
+            UPDATE pecas
             SET
-                nome = %s,
+                codigo = %s,
+                nome_produto = %s,
+                fabricante = %s,
                 descricao = %s,
-                valor_base = %s,
-                tempo_estimado = %s,
+                preco_custo = %s,
+                preco_venda = %s,
+                estoque_minimo = %s,
                 status = %s
             WHERE id = %s
         """
 
         valores = (
-            nome,
+            codigo,
+            nome_produto,
+            fabricante,
             descricao,
-            valor_base,
-            tempo_estimado,
+            preco_custo,
+            preco_venda,
+            estoque_minimo,
             status,
             id
         )
 
         cursor.execute(sql, valores)
+
         conexao.commit()
 
         return cursor.rowcount
 
     finally:
+
         cursor.close()
         conexao.close()
 
-def excluir_servico(id):
+def excluir_peca(id):
+
     conexao = get_connection()
     cursor = conexao.cursor()
 
     try:
+
         cursor.execute("""
-            DELETE FROM servicos
+            DELETE FROM pecas
             WHERE id = %s
         """, (id,))
 
@@ -141,5 +187,6 @@ def excluir_servico(id):
         return cursor.rowcount
 
     finally:
+
         cursor.close()
         conexao.close()

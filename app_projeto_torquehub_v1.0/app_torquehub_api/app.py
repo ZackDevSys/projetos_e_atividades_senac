@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_cors import CORS
-
 from routes.status_routes import status_routes
 from routes.usuario_routes import usuario_routes
 from routes.cliente_routes import cliente_routes
@@ -9,6 +8,10 @@ from routes.servico_routes import servico_routes
 from routes.ordem_servico_routes import ordem_servico_routes
 from routes.item_servico_routes import item_servico_routes
 from routes.ordem_servico_usuario_routes import ordem_servico_usuario_routes
+from routes.peca_routes import peca_routes
+from routes.item_peca_routes import item_peca_routes
+from routes.movimentacao_estoque_routes import movimentacao_estoque_routes
+from auth.auth_routes import auth_routes
 
 app = Flask(__name__)
 
@@ -22,6 +25,10 @@ app.register_blueprint(servico_routes)
 app.register_blueprint(ordem_servico_routes)
 app.register_blueprint(item_servico_routes)
 app.register_blueprint(ordem_servico_usuario_routes)
+app.register_blueprint(peca_routes)
+app.register_blueprint(item_peca_routes)
+app.register_blueprint(movimentacao_estoque_routes)
+app.register_blueprint(auth_routes)
 
 @app.route("/")
 def inicio():

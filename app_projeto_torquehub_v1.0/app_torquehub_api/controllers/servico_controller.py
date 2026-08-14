@@ -8,7 +8,6 @@ from services.servico_service import (
     excluir_servico
 )
 
-
 def listar():
 
     try:
@@ -27,7 +26,6 @@ def listar():
             "mensagem": "Erro ao buscar serviços.",
             "erro": str(erro)
         }), 500
-
 
 def buscar_por_id(id):
 
@@ -52,7 +50,6 @@ def buscar_por_id(id):
             "mensagem": "Erro ao buscar serviço.",
             "erro": str(erro)
         }), 500
-
 
 def criar():
 
@@ -87,7 +84,6 @@ def criar():
             "mensagem": "Erro ao cadastrar serviço.",
             "erro": str(erro)
         }), 500
-
 
 def atualizar(id):
 
@@ -127,7 +123,6 @@ def atualizar(id):
             "mensagem": "Erro ao atualizar serviço.",
             "erro": str(erro)
         }), 500
-
 
 def excluir(id):
 

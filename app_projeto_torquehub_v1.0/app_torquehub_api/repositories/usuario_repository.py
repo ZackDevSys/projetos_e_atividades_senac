@@ -1,6 +1,5 @@
 from config.database import get_connection
 
-
 def listar_usuarios():
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -26,7 +25,6 @@ def listar_usuarios():
         cursor.close()
         conexao.close()
 
-
 def buscar_usuario_por_id(id):
     conexao = get_connection()
     cursor = conexao.cursor(dictionary=True)
@@ -51,7 +49,6 @@ def buscar_usuario_por_id(id):
     finally:
         cursor.close()
         conexao.close()
-
 
 def criar_usuario(
     nome,
@@ -101,7 +98,6 @@ def criar_usuario(
     finally:
         cursor.close()
         conexao.close()
-
 
 def atualizar_usuario(
     id,
@@ -178,7 +174,6 @@ def atualizar_usuario(
     finally:
         cursor.close()
         conexao.close()
-
 
 def excluir_usuario(id):
     conexao = get_connection()
