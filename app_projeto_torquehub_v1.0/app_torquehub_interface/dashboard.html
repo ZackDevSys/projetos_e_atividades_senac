@@ -9,126 +9,209 @@
 </head>
 
 <body>
-
     <div class="layout">
-
+        <!-- MENU LATERAL -->
         <aside class="menu-lateral">
-
             <div class="logo-menu">
-
-                <h1>Torque<span>Hub</span></h1>
-
+                <img src="img/logo_torquehub_ofc_retro.png" alt="TorqueHub">
             </div>
 
-            <nav>
-
-                <a href="dashboard.html" class="menu-ativo">
-                    Dashboard
+            <nav class="menu-navegacao">
+                <a href="dashboard.html" class="menu-item menu-ativo">
+                    <span class="menu-icone">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M6 1v3H1V1zM1 0a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm14 12v3h-5v-3zm-5-1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM6 8v7H1V8zM1 7a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zm14-6v7h-5V1zm-5-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z" />
+                        </svg>
+                    </span>
+                    <span>Dashboard</span>
                 </a>
 
-                <a href="#">
-                    Clientes
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.1 6.1 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg>
+                    </span>
+                    <span>Clientes</span>
                 </a>
 
-                <a href="#">
-                    Veículos
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17s3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
+                        </svg>
+                    </span>
+                    <span>Veículos</span>
                 </a>
 
-                <a href="#">
-                    Ordens de Serviço
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M9.405 1.05a1.5 1.5 0 0 0-2.81 0l-.162.444a1.5 1.5 0 0 1-1.897.89l-.438-.145a1.5 1.5 0 0 0-1.987 1.987l.145.438a1.5 1.5 0 0 1-.89 1.897l-.444.162a1.5 1.5 0 0 0 0 2.81l.444.162a1.5 1.5 0 0 1 .89 1.897l-.145.438a1.5 1.5 0 0 0 1.987 1.987l.438-.145a1.5 1.5 0 0 1 1.897.89l.162.444a1.5 1.5 0 0 0 2.81 0l.162-.444a1.5 1.5 0 0 1 1.897-.89l.438.145a1.5 1.5 0 0 0 1.987-1.987l-.145-.438a1.5 1.5 0 0 1 .89-1.897l.444-.162a1.5 1.5 0 0 0 0-2.81l-.444-.162a1.5 1.5 0 0 1-.89-1.897l.145-.438a1.5 1.5 0 0 0-1.987-1.987l-.438.145a1.5 1.5 0 0 1-1.897-.89zM8 10.93a2.93 2.93 0 1 1 0-5.86 2.93 2.93 0 0 1 0 5.86" />
+                        </svg>
+                    </span>
+                    <span>Ordens de Serviço</span>
                 </a>
 
-                <a href="#">
-                    Serviços
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z" />
+                        </svg>
+                    </span>
+                    <span>Serviços</span>
                 </a>
 
-                <a href="#">
-                    Peças
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M1 4.5 8 1l7 3.5v7L8 15l-7-3.5zM8 2.1 2.5 4.85 8 7.6l5.5-2.75zM2 5.8v5.1l5.5 2.75v-5.1zm6.5 2.75v5.1L14 10.9V5.8z" />
+                        </svg>
+                    </span>
+                    <span>Peças</span>
                 </a>
 
-                <a href="#">
-                    Estoque
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M7.752.066a.5.5 0 0 1 .496 0l3.75 2.143a.5.5 0 0 1 .252.434v3.995l3.498 2A.5.5 0 0 1 16 9.07v4.286a.5.5 0 0 1-.252.434l-3.75 2.143a.5.5 0 0 1-.496 0l-3.502-2-3.502 2.001a.5.5 0 0 1-.496 0l-3.75-2.143A.5.5 0 0 1 0 13.357V9.071a.5.5 0 0 1 .252-.434L3.75 6.638V2.643a.5.5 0 0 1 .252-.434zM4.25 7.504 1.508 9.071l2.742 1.567 2.742-1.567zM7.5 9.933l-2.75 1.571v3.134l2.75-1.571zm1 3.134 2.75 1.571v-3.134L8.5 9.933zm.508-3.996 2.742 1.567 2.742-1.567-2.742-1.567zm2.242-2.433V3.504L8.5 5.076V8.21zM7.5 8.21V5.076L4.75 3.504v3.134zM5.258 2.643 8 4.21l2.742-1.567L8 1.076zM15 9.933l-2.75 1.571v3.134L15 13.067zM3.75 14.638v-3.134L1 9.933v3.134z" />
+                        </svg>
+                    </span>
+                    <span>Estoque</span>
                 </a>
 
-                <a href="#">
-                    Usuários
+                <a href="#" class="menu-item">
+                    <span class="menu-icone">
+                        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.1 6.1 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                        </svg>
+                    </span>
+                    <span>Usuários</span>
                 </a>
-
             </nav>
 
-            <button id="botao-sair" class="botao-sair">
-                Sair
-            </button>
-
+            <div class="menu-rodape">
+                <button id="botao-sair" class="botao-sair">
+                    <span>↪</span> Sair
+                </button>
+            </div>
         </aside>
 
+        <!-- CONTEÚDO PRINCIPAL -->
         <main class="conteudo">
-
-            <header class="topo">
-
+            <header class="topo-dashboard">
                 <div>
-
+                    <span class="titulo-pequeno">TORQUEHUB / SISTEMA</span>
                     <h2>Dashboard</h2>
-
-                    <p id="saudacao">
-                        Bem-vindo ao TorqueHub !!
-                    </p>
-
+                    <p id="saudacao">Bem-vindo ao TorqueHub</p>
                 </div>
 
+                <div class="usuario-logado">
+                    <div class="usuario-avatar">T</div>
+                    <div class="usuario-info">
+                        <strong id="nome-usuario">Usuário</strong>
+                        <span id="perfil-usuario">Perfil</span>
+                    </div>
+                </div>
             </header>
 
+            <!-- CARDS -->
             <section class="cards-dashboard">
-
-                <div class="card">
-
-                    <h3>Clientes</h3>
-
-                    <strong>0</strong>
-
-                    <p>Cadastrados</p>
-
+                <div class="card-dashboard">
+                    <div class="card-topo">
+                        <span class="card-titulo">Clientes</span>
+                        <div class="card-icone vermelho">
+                            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.1 6.1 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
+                            </svg>
+                        </div>
+                    </div>
+                    <strong class="card-numero">0</strong>
+                    <p>Clientes cadastrados</p>
                 </div>
 
-                <div class="card">
-
-                    <h3>Veículos</h3>
-
-                    <strong>0</strong>
-
-                    <p>Cadastrados</p>
-
+                <div class="card-dashboard">
+                    <div class="card-topo">
+                        <span class="card-titulo">Veículos</span>
+                        <div class="card-icone azul">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17s3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <strong class="card-numero">0</strong>
+                    <p>Veículos cadastrados</p>
                 </div>
 
-                <div class="card">
-
-                    <h3>Ordens Abertas</h3>
-
-                    <strong>0</strong>
-
+                <div class="card-dashboard">
+                    <div class="card-topo">
+                        <span class="card-titulo">Ordens Abertas</span>
+                        <div class="card-icone amarelo">
+                            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M9.405 1.05a1.5 1.5 0 0 0-2.81 0l-.162.444a1.5 1.5 0 0 1-1.897.89l-.438-.145a1.5 1.5 0 0 0-1.987 1.987l.145.438a1.5 1.5 0 0 1-.89 1.897l-.444.162a1.5 1.5 0 0 0 0 2.81l.444.162a1.5 1.5 0 0 1 .89 1.897l-.145.438a1.5 1.5 0 0 0 1.987 1.987l.438-.145a1.5 1.5 0 0 1 1.897.89l.162.444a1.5 1.5 0 0 0 2.81 0l.162-.444a1.5 1.5 0 0 1 1.897-.89l.438.145a1.5 1.5 0 0 0 1.987-1.987l-.145-.438a1.5 1.5 0 0 1 .89-1.897l.444-.162a1.5 1.5 0 0 0 0-2.81l-.444-.162a1.5 1.5 0 0 1-.89-1.897l.145-.438a1.5 1.5 0 0 0-1.987-1.987l-.438.145a1.5 1.5 0 0 1-1.897-.89zM8 10.93a2.93 2.93 0 1 1 0-5.86 2.93 2.93 0 0 1 0 5.86" />
+                            </svg>
+                        </div>
+                    </div>
+                    <strong class="card-numero">0</strong>
                     <p>Em andamento</p>
-
                 </div>
 
-                <div class="card">
-
-                    <h3>Peças</h3>
-
-                    <strong>0</strong>
-
-                    <p>Cadastradas</p>
-
+                <div class="card-dashboard">
+                    <div class="card-topo">
+                        <span class="card-titulo">Peças</span>
+                        <div class="card-icone verde">
+                            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M1 4.5 8 1l7 3.5v7L8 15l-7-3.5zM8 2.1 2.5 4.85 8 7.6l5.5-2.75zM2 5.8v5.1l5.5 2.75v-5.1zm6.5 2.75v5.1L14 10.9V5.8z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <strong class="card-numero">0</strong>
+                    <p>Peças cadastradas</p>
                 </div>
-
             </section>
 
-        </main>
+            <!-- PAINEL PRINCIPAL -->
+            <section class="painel-dashboard">
+                <div class="painel-cabecalho">
+                    <div>
+                        <span class="titulo-pequeno">VISÃO GERAL</span>
+                        <h3>Visão geral da oficina</h3>
+                    </div>
+                </div>
 
+                <div class="painel-vazio">
+                    <div class="painel-vazio-icone">
+                        <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M9.405 1.05a1.5 1.5 0 0 0-2.81 0l-.162.444a1.5 1.5 0 0 1-1.897.89l-.438-.145a1.5 1.5 0 0 0-1.987 1.987l.145.438a1.5 1.5 0 0 1-.89 1.897l-.444.162a1.5 1.5 0 0 0 0 2.81l.444.162a1.5 1.5 0 0 1 .89 1.897l-.145.438a1.5 1.5 0 0 0 1.987 1.987l.438-.145a1.5 1.5 0 0 1 1.897.89l.162.444a1.5 1.5 0 0 0 2.81 0l.162-.444a1.5 1.5 0 0 1 1.897-.89l.438.145a1.5 1.5 0 0 0 1.987-1.987l-.145-.438a1.5 1.5 0 0 1 .89-1.897l.444-.162a1.5 1.5 0 0 0 0-2.81l-.444-.162a1.5 1.5 0 0 1-.89-1.897l.145-.438a1.5 1.5 0 0 0-1.987-1.987l-.438.145a1.5 1.5 0 0 1-1.897-.89zM8 10.93a2.93 2.93 0 1 1 0-5.86 2.93 2.93 0 0 1 0 5.86" />
+                        </svg>
+                    </div>
+                    <h3>Sistema pronto para operação</h3>
+                    <p>Utilize o menu lateral para acessar os módulos de gerenciamento do TorqueHub.</p>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/dashboard.js"></script>
-
 </body>
 
 </html>
